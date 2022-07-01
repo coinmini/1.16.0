@@ -525,7 +525,7 @@ func (st *Local) AcquireSector(ctx context.Context, sid storage.SectorRef, exist
 		return st.acquireSector(ctx, sid, existing, allocate, pathType, op)
 	}
 
-	checkDeclareSector := func(id ID, p *path, sid abi.SectorID, fileType storiface.SectorFileType) {
+	checkDeclareSector := func(id storiface.ID, p *path, sid abi.SectorID, fileType storiface.SectorFileType) {
 		spath := p.sectorPath(sid, fileType)
 		if fileType == storiface.FTCache || fileType == storiface.FTUpdateCache {
 			spath = filepath.Join(spath, "p_aux")
